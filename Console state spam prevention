@@ -1,0 +1,24 @@
+--I put this togehter in like 5 seconds, so its
+
+Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
+	local Name = refId.."-Spam"
+	local Name2 = Name.."-Timer"
+	if Players[pid].StateSpam == nil then
+		Players[pid].StateSpam = {}
+	end	
+	if Players[pid].StateSpam[Name] == nil then
+		Players[pid].StateSpam[Name] = 0
+	else	
+		Players[pid].StateSpam[Name] = (Players[pid].StateSpam[Name] + 1)
+		if Players[pid].StateSpam[Name] >= 5 then
+			--Insert your own cell load check here. Make sure its loaded. I would add mine, but it is full of extra stuff.
+			--Insert Your own Delete packet here for the RefIndex! I would add mine, but is full of extra stuff.
+			tes3mp.LogMessage(1, "- " .. refIndex .. " with refId: "..refId.." was causing spam and has been deleted")			
+		end
+	end	
+end
+
+--Add this to SaveObjectStates in the cell base file
+    if state == false then
+			myMod.ConsoleSpamPrevention(pid, refIndex, refId, self.description)
+		end		
