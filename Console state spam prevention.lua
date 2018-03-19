@@ -1,4 +1,4 @@
---I put this togehter in like 5 seconds, so its messy lookin
+--I did my best to "convert" this to a version everyone else could use. This was put together quickly, but it works fine.
 
 Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
 	local Name = refId.."-Spam"
