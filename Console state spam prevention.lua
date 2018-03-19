@@ -2,7 +2,6 @@
 
 Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
 	local Name = refId.."-Spam"
-	local Name2 = Name.."-Timer"
 	if Players[pid].StateSpam == nil then
 		Players[pid].StateSpam = {}
 	end	
