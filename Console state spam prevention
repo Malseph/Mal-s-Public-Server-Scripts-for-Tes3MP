@@ -1,4 +1,4 @@
---I put this togehter in like 5 seconds, so its
+--I put this togehter in like 5 seconds, so its messy lookin
 
 Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
 	local Name = refId.."-Spam"
@@ -19,6 +19,6 @@ Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
 end
 
 --Add this to SaveObjectStates in the cell base file
-    if state == false then
-			myMod.ConsoleSpamPrevention(pid, refIndex, refId, self.description)
-		end		
+if state == false then
+	myMod.ConsoleSpamPrevention(pid, refIndex, refId, self.description)
+end		
