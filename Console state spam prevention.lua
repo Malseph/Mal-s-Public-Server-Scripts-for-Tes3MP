@@ -1,6 +1,6 @@
 --I did my best to "convert" this to a version everyone else could use. This was put together quickly, but it works fine.
 --Don't bother using this if you don't understand how to modify anything yourself. 
---You will need 1. A delete packet function, and 2. To modify SaveObjectStates so that "ConsoleSpamPrevention" can get what it depends on
+--You will need 1. A delete packet function (JUST PACKET, DONT DELETE OBJECT DATA), and 2. To modify SaveObjectStates so that "ConsoleSpamPrevention" can get what it depends on
 
 Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
 	local Name = refId.."-Spam"
