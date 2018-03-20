@@ -11,7 +11,7 @@ Methods.ConsoleSpamPrevention = function(pid, refIndex, refId, cellDescription)
 		Players[pid].StateSpam[Name] = 0
 	else	
 		Players[pid].StateSpam[Name] = (Players[pid].StateSpam[Name] + 1)
-		if Players[pid].StateSpam[Name] >= 5 then
+		if Players[pid].StateSpam[Name] >= 5 then -- If the player gets 5 false object states for the same refid in that cell, delete it.
 			--Optional: Insert your own cell load check here. Make sure its loaded. I would add mine, but it is full of extra stuff.
 			--Insert Your own Delete packet here for the RefIndex! I would add mine, but is full of extra stuff. Just make sure you only send it to the player that sets that state false (As seen below)
 			tes3mp.LogMessage(1, "- " .. refIndex .. " with refId: "..refId.." was causing spam and has been deleted")			
