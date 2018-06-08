@@ -22,7 +22,7 @@
 		tes3mp.SendConsoleCommand(true)
 	end
 	
-	Methods.SpectatePersist = function(pid) --Be sure to add Methods.DisableAgain(pid) to your cell change function
+	Methods.SpectatePersist = function(pid) --Be sure to add Methods.SpectatePersist(pid) to your cell change function
 		if Players[pid].Disabled == true then
 			Methods.SetPlayerState(pid, "disable")
 			Players[pid].Disabled = nil
