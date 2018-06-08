@@ -1,0 +1,38 @@
+--This was made for the owner of the server Ecarlate. This is a sort of watered down version of the spectate admins have access to on Mal's Vanilla Morrowind 24/7
+  --Forgive me if the format gets fucked up. I'm not familiar with GitHub.
+  
+  --Add this stuff to myMod.lua somewhere.
+	Methods.ToggleSpectate = function(pid)
+		if Players[pid].Disabled == true then
+			Methods.SetPlayerState(pid, "enable")
+			Players[pid].Disabled = nil
+		else
+			Methods.SetPlayerState(pid, "disable")
+			Players[pid].Disabled = true
+		end
+	end
+	
+	Methods.SetPlayerState = function(pid, State)
+		local CurrentCell = tes3mp.GetCell(pid)
+		tes3mp.InitializeEvent(pid)
+		tes3mp.SetEventCell(CurrentCell)
+		tes3mp.SetPlayerAsObject(pid)
+		tes3mp.AddWorldObject()	
+		tes3mp.SetEventConsoleCommand(State)
+		tes3mp.SendConsoleCommand(true)
+	end
+	
+	Methods.SpectatePersist = function(pid) --Be sure to add Methods.DisableAgain(pid) to your cell change function
+		if Players[pid].Disabled == true then
+			Methods.SetPlayerState(pid, "disable")
+			Players[pid].Disabled = nil
+		else
+			Methods.SetPlayerState(pid, "enable")
+			Players[pid].Disabled = true
+		end
+	end	
+	
+	
+	--Add this to server.lua somewhere in your commands
+	elseif cmd[1] == "spectate" and --Enter your rank here. For example, "and PlayerRank >= 2 then"
+		myMod.ToggleSpectate(pid)
