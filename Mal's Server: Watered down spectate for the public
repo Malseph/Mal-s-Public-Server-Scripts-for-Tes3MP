@@ -23,10 +23,10 @@
 	end
 	
 	Methods.SpectatePersist = function(pid) --Be sure to add Methods.SpectatePersist(pid) to your cell change function
-	    if Players[pid].Disabled == true then
-		Methods.SetPlayerState(pid, "disable")
-		Players[pid].Disabled = true
-	    end
+	   	if Players[pid].Disabled == true then
+			Methods.SetPlayerState(pid, "disable")
+			Players[pid].Disabled = true
+	    	end
 	end 	
 	
 	
