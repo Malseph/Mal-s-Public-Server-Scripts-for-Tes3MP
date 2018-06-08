@@ -51,7 +51,7 @@ end
                 end    
                 myMod.ToggleSpectate(pid)
                 tes3mp.SendMessage(pid, color.Warning.."No longer spectating", false)
-            elseif myMod.CheckPlayerValidity(pid, cmd[2]) then --So now just specify a target. Like /spectate 5 for example
+            elseif myMod.CheckPlayerValidity(pid, tonumber(cmd[2])) then --So now just specify a target. Like /spectate 5 for example
                 local TargetPid = tonumber(cmd[2])
                 Players[TargetPid].Spectator = pid
                 Players[pid].SpectateTarget = TargetPid
