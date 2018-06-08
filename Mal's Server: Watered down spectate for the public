@@ -23,14 +23,11 @@
 	end
 	
 	Methods.SpectatePersist = function(pid) --Be sure to add Methods.SpectatePersist(pid) to your cell change function
-		if Players[pid].Disabled == true then
-			Methods.SetPlayerState(pid, "disable")
-			Players[pid].Disabled = nil
-		else
-			Methods.SetPlayerState(pid, "enable")
-			Players[pid].Disabled = true
-		end
-	end	
+	    if Players[pid].Disabled == true then
+		Methods.SetPlayerState(pid, "disable")
+		Players[pid].Disabled = true
+	    end
+	end 	
 	
 	
 	--Add this to server.lua somewhere in your commands
