@@ -34,9 +34,33 @@ Methods.TeleportSpectator = function(pid) --Only required if you choose the tele
         local SpectatorPid = Players[pid].Spectator
         Methods.TeleportToPlayer(pid, SpectatorPid, pid)
     end    
-end    
+end 
+
+Methods.SpectateTPTimer = function(pid) --Timer for if you want to repeatedly teleport to the spectate target
+	if Players[pid].SpectateTimer ~= nil then
+		return
+	end	
+	Players[pid].SpectateTimer = tes3mp.CreateTimerEx("SpectateTeleportEnd", time.seconds(1), "i", pid)
+	tes3mp.StartTimer(Players[pid].SpectateTimer)
+	
+	function SpectateTeleportEnd(pid)
+		if Players[pid] ~= nil and Players[pid]:IsLoggedIn() then
+			local TargetPid = Players[pid].SpectateTarget
+			if Players[TargetPid] ~= nil then
+				Methods.TeleportToPlayer(pid, pid, TargetPid)
+				tes3mp.RestartTimer(Players[pid].SpectateTimer, time.seconds(1))
+			else
+				Players[pid].SpectateTimer = nil
+			end
+		end
+	end	
+end
 
 	
+	--Add this to server.lua. Activates spectate timer to repeatedly tp
+		elseif cmd[1] == "spectatetimer" and --rank here
+			myMod.SpectateTPTimer(pid)
+		
 	--Add this to server.lua somewhere in your commands. Doesnt teleport you to them. Choose one or the other
 	elseif cmd[1] == "spectate" and --Enter your rank here. For example, "and PlayerRank >= 2 then"
 		myMod.ToggleSpectate(pid)
